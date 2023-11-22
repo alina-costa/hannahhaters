@@ -1,50 +1,48 @@
-import React, { useState, useRef, useEffect } from "react";
-import TodoList from "./TodoList";
-import { v4 as uuidv4 } from "uuid";
-
-const LOCAL_STORAGE_KEY = "todoApp.todos";
+import React, { useState } from "react";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  const todoNameRef = useRef();
+  const [name, setName] = useState("");
+  const [date, setDate] = useState("");
 
-  useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (storedTodos) setTodos((prevTodos) => [...prevTodos, ...storedTodos]);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
-  }, [todos]);
-
-  function toggleTodo(id) {
-    const newTodos = [...todos];
-    const todo = newTodos.find((todo) => todo.id === id);
-    todo.complete = !todo.complete;
-    setTodos(newTodos);
-  }
-
-  function handleAddTodo(e) {
-    const name = todoNameRef.current.value;
-    if (name === " ") return;
-    setTodos((prevTodos) => {
-      return [...prevTodos, { id: uuidv4(), name: name, complete: false }];
-    });
-    todoNameRef.current.value = null;
-  }
-
-  function handleClearTodos() {
-    const newTodos = todos.filter((todo) => !todo.complete);
-    setTodos(newTodos);
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const d = new Date();
+    const status = { name, d };
+    console.log(status);
+  };
 
   return (
     <>
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      <div className="button-position">
+        <div className="header-container">
+          <h2>We're All Mad Here...</h2>
+          <h4>No, not at you.</h4>
+          <form onSubmit={handleSubmit}>
+            <input
+              required
+              type="text"
+              placeholder="Your Name Here"
+              className="input-name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            ></input>
+            <p
+              className="input-date"
+              value={date}
+              onSubmit={() => setDate(new Date())}
+            ></p>
+            <button>Submit</button>
+          </form>
+        </div>
+        <p>{name}</p>
+        {/* </div> */}
+      </div>
+
+      {/* <TodoList todos={todos} toggleTodo={toggleTodo} />
       <input ref={todoNameRef} type="text" />
-      <button onClick={handleAddTodo}>Add Todos</button>
-      <button onClick={handleClearTodos}>Clear Completed Todos</button>
-      <div>{todos.filter((todo) => !todo.complete).length} left to do </div>
+      <button onClick={handleAddTodo}>Add Update</button>
+      <button onClick={handleClearUpdates}>Clear Updates</button>
+      <div>{todos.filter((todo) => !todo.complete).length} left to do </div> */}
     </>
   );
 }
