@@ -2,12 +2,15 @@ import React, { useState } from "react";
 
 function App() {
   const [name, setName] = useState("");
+  const [status, setStatus] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const date = new Date();
-    const status = { name, date };
-    console.log(status);
+    const newStatus = { name, date };
+    // console.log(status);
+    setStatus([newStatus, ...status.slice(0, 4)]); // Keep only the last 5 statuses
+    setName("");
   };
 
   return (
@@ -28,7 +31,16 @@ function App() {
             <button>Submit</button>
           </form>
         </div>
-        <div className="last-5"></div>
+        <div className="last5">
+          <p>
+            {status.map((status, index) => (
+              <span key={index}>
+                {status.name} - {status.date.toString()}
+                <br />
+              </span>
+            ))}
+          </p>
+        </div>
       </div>
     </>
   );
