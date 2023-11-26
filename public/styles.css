@@ -55,9 +55,18 @@ button:hover {
   cursor: pointer;
 }
 
-.last-5 {
+.last5 {
   height: 350px;
   width: 250px;
   background-color: #ffffff;
   margin-left: 27px;
+}
+
+p {
+  color: rgb(0, 255, 0);
+  font-weight: 700;
+}
+
+span {
+  font-weight: normal;
 }

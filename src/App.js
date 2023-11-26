@@ -6,9 +6,10 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const date = new Date();
-    const newStatus = { name, date };
-    // console.log(status);
+    const d = new Date();
+    const date = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+    const time = d.getHours() + ":" + d.getMinutes();
+    const newStatus = { name, date, time };
     setStatus([newStatus, ...status.slice(0, 4)]); // Keep only the last 5 statuses
     setName("");
   };
@@ -34,10 +35,14 @@ function App() {
         <div className="last5">
           <p>
             {status.map((status, index) => (
-              <span key={index}>
-                {status.name} - {status.date.toString()}
+              <p key={index}>
+                {status.name}
+                <span> is not mad at you as of </span>
+                {status.date.toString()}
+                <span> at </span>
+                {status.time.toString()}
                 <br />
-              </span>
+              </p>
             ))}
           </p>
         </div>
