@@ -18,8 +18,8 @@ function App() {
     <>
       <div className="container">
         <div className="header-container">
-          <h2>We're All Mad Here...</h2>
-          <h4>No, not at you.</h4>
+          <h4>Proof That No One Is Mad At You</h4>
+          {/* <h4>No, not at you.</h4> */}
           <form onSubmit={handleSubmit}>
             <input
               required
@@ -33,18 +33,19 @@ function App() {
           </form>
         </div>
         <div className="last5">
-          <p>
-            {status.map((status, index) => (
-              <p key={index}>
-                {status.name}
-                <span> is not mad at you as of </span>
-                {status.date.toString()}
-                <span> at </span>
-                {status.time.toString()}
-                <br />
-              </p>
-            ))}
-          </p>
+          {status.map((status, index) => (
+            <p key={index} className="status-container">
+              {status.name}
+              <span>
+                {" "}
+                is not mad at you as of <br />
+              </span>
+              {status.date.toString()}
+              <span> at </span>
+              {status.time.toString()}
+              <br />
+            </p>
+          ))}
         </div>
       </div>
     </>

@@ -1,6 +1,7 @@
 * {
-  background-color: #333333;
+  background-color: #1b1d20;
   color: #ffffff;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 #root {
   align-items: center;
@@ -25,7 +26,7 @@ form {
   display: flex;
   flex-direction: column;
   width: 100px;
-  margin-top: 30%;
+  margin-top: 20%;
 }
 
 .input-name {
@@ -43,11 +44,13 @@ form {
 
 button {
   border-radius: 5px;
-  border-color: #cadbae;
+  /* border-color: #cadbae; */
   height: 50px;
   width: 100px;
-  background-color: #cadbae;
-  color: #333333;
+  background-color: rgb(0, 255, 0);
+  filter: drop-shadow(0 0 5px rgb(0, 255, 0));
+  color: #1b1d20;
+  font-weight: 600;
   margin: 30px;
 }
 
@@ -56,14 +59,28 @@ button:hover {
 }
 
 .last5 {
-  height: 350px;
-  width: 250px;
-  background-color: #ffffff;
-  margin-left: 27px;
+  min-height: 350px;
+  width: 275px;
+  background-color: #1b1d20;
+  border-radius: 5px;
+  margin-left: 15px;
+  filter: drop-shadow(0 0 5px rgb(0, 255, 0));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status-container {
+  width: 90%;
+  height: fit-content;
+  filter: drop-shadow(0 0 5px rgb(0, 255, 0));
+  border-radius: 5px;
+  padding: auto;
+  text-align: center;
 }
 
 p {
-  color: rgb(0, 255, 0);
+  color: #ffffff;
   font-weight: 700;
 }
 
