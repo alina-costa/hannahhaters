@@ -7,8 +7,21 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const d = new Date();
-    const date = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
-    const time = d.getHours() + ":" + d.getMinutes();
+    const date = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
+    let hours;
+    let apm;
+    if (d.getHours() > 12) {
+      hours = d.getHours() - 12;
+      apm = "pm";
+    } else if (d.getHours() === 12) {
+      hours = d.getHours();
+      apm = "pm";
+    } else {
+      hours = d.getHours();
+      apm = "am";
+    }
+    const minutes = d.getMinutes();
+    const time = hours + ":" + minutes + apm;
     const newStatus = { name, date, time };
     setStatus([newStatus, ...status.slice(0, 4)]); // Keep only the last 5 statuses
     setName("");
@@ -19,7 +32,6 @@ function App() {
       <div className="container">
         <div className="header-container">
           <h4>Proof That No One Is Mad At You</h4>
-          {/* <h4>No, not at you.</h4> */}
           <form onSubmit={handleSubmit}>
             <input
               required
