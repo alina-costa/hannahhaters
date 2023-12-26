@@ -31,7 +31,7 @@ function App() {
     <>
       <div className="container">
         <div className="header-container">
-          <h4>Proof That No One Is Mad At You</h4>
+          <h4>JK No One Is Mad At You</h4>
           <form onSubmit={handleSubmit}>
             <input
               required
